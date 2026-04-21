@@ -31,9 +31,11 @@ Suggested process:
 ## Example command patterns
 
 ```bash
-cmux split --direction right
-cmux split --direction down
+cmux new-split right
+cmux new-split down
+cmux new-pane [--direction <left|right|up|down>]
 cmux list-panes
+cmux focus-pane --pane <PANE_ID>
 ```
 
 ## Layout conventions

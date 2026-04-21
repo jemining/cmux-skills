@@ -58,11 +58,18 @@ Suggested process:
 These are examples. Adjust to the user's environment.
 
 ```bash
+# Discovery
 cmux list-panes
-cmux identify
-cmux get text --surface <SURFACE_ID>
-cmux send-keys --pane <PANE_ID> "npm run dev" C-m
-cmux send-keys --pane <PANE_ID> "pnpm test" C-m
+cmux list-pane-surfaces [--pane <PANE_ID>]
+cmux identify [--surface <SURFACE_ID>]
+cmux tree [--all]
+
+# Read output
+cmux read-screen --surface <SURFACE_ID> [--scrollback] [--lines <n>]
+
+# Send commands
+cmux send --surface <SURFACE_ID> "npm run dev"
+cmux send-key --surface <SURFACE_ID> Enter
 ```
 
 ## Verification pattern
