@@ -12,20 +12,6 @@ Enables AI assistants to interact with the cmux workspace:
 - Inspect the integrated browser surface
 - Coordinate multi-agent workflows across panes
 
-## Installation
-
-Add this repository as a marketplace:
-
-```
-/plugin add-marketplace jemining/cmux-skills
-```
-
-Then install the skill:
-
-```
-/plugin install cmux-skills
-```
-
 ## Usage
 
 Once installed, your AI assistant will automatically invoke this skill when you ask it to:
