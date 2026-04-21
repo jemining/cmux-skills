@@ -1,21 +1,5 @@
 # Working with Panes
 
-## When to use
-
-Read this reference when you need to:
-- inspect logs from another pane
-- read stack traces or test output
-- send a command to a background pane
-- verify whether a service started correctly
-- coordinate work across panes in the same workspace
-
-## General rules
-
-- Never guess pane identity.
-- First discover available panes or surfaces.
-- Read before modifying when debugging.
-- After sending a command to a pane, verify the result by inspecting that pane again.
-
 ## Discovery workflow
 
 When you need to work with another pane:

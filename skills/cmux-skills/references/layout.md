@@ -1,19 +1,5 @@
 # Layout Management
 
-## When to use
-
-Read this reference when you need to:
-- split the workspace
-- create space for a new service or log stream
-- set up a dedicated pane for tests, backend, database, or browser work
-- reorganize the workspace for multi-agent tasks
-
-## General rules
-
-- Prefer creating a new pane when the current pane must remain interactive.
-- Keep long-running services in dedicated panes.
-- Keep logs and active editing separated when possible.
-
 ## Split workflow
 
 Use this when the user asks:
@@ -31,12 +17,19 @@ Suggested process:
 ## Example command patterns
 
 ```bash
+# Split the current pane in a direction (shorthand)
 cmux new-split right
 cmux new-split down
+
+# Create a new independent pane (not tied to current pane's split axis)
 cmux new-pane [--direction <left|right|up|down>]
+
+# List and focus
 cmux list-panes
 cmux focus-pane --pane <PANE_ID>
 ```
+
+Use `new-split` when you want to divide the current pane. Use `new-pane` when you want a new pane added to the workspace independently.
 
 ## Layout conventions
 

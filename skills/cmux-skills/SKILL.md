@@ -1,31 +1,40 @@
 ---
 name: cmux
-description: Use this skill when working inside cmux to inspect other panes, capture terminal output, send commands to background panes, manage pane layouts, or inspect the built-in browser. Especially useful for multi-agent workflows, debugging logs, frontend verification, and orchestration across panes.
+description: Use this skill when the user explicitly mentions cmux, or when working inside a cmux workspace and the task involves interacting with panes, the cmux browser, or cross-pane coordination. Do NOT invoke for generic terminal, shell, or browser tasks outside of the cmux environment.
 ---
 
 # cmux
 
-Use this skill when the task involves the cmux terminal environment.
+Use this skill only when the task explicitly involves the cmux terminal environment — pane inspection, cross-pane commands, layout management, or the cmux browser surface.
 
-Typical cases:
-- The user asks you to inspect logs or errors in another pane.
-- The user asks you to start or restart a service in a different pane.
-- The user asks you to split the workspace or manage panes.
-- The user asks you to inspect a frontend/UI rendered in the cmux browser.
-- The user asks you to coordinate multiple agents or sessions inside the same cmux workspace.
+## ⛔ Before reading any reference file
+
+Classify the request first. Read exactly one file that matches. Do not read multiple files at once.
+
+| Request type | Read only |
+|---|---|
+| Inspect logs, errors, or output in another pane / send a command to a pane | `references/panes.md` |
+| Split workspace, create panes, manage layout | `references/layout.md` |
+| Inspect frontend UI, browser snapshot, visual verification | `references/browser.md` |
+| Coordinate multiple agents or sessions across panes | `references/workflows.md` |
+| Something is not working, recovery, diagnosis | `references/troubleshooting.md` |
+
+If the classification is ambiguous, pick the single most likely file. Do not read multiple files as a fallback.
+
+## cmux concepts
+
+- **Window**: A top-level application window.
+- **Workspace**: A working context inside a window.
+- **Pane**: A visible split region in the workspace.
+- **Surface**: A concrete terminal or browser surface that can be targeted for reading or interaction.
+
+Tasks usually operate at the **pane** or **surface** level.
 
 ## Operating principles
 
-- Prefer reading only the minimum reference needed for the current task.
-- Do not claim that you cannot access another pane until you have checked the cmux references.
+- Read one reference file per task. Stop after reading it.
+- Do not claim that you cannot access another pane until you have checked the relevant reference.
 - Do not invent pane IDs, surface IDs, browser state, or logs.
 - When the task depends on live terminal state, inspect it first and then act.
-
-## References
-
-- For a quick mental model of cmux concepts, read `references/overview.md`
-- For reading output from another pane, read `references/panes.md`
-- For creating/splitting panes and layout operations, read `references/layout.md`
-- For browser snapshots and UI inspection, read `references/browser.md`
-- For common multi-agent operating patterns, read `references/workflows.md`
-- For common failures and recovery steps, read `references/troubleshooting.md`
+- Always inspect before acting when the task depends on runtime state.
+- Prefer explicit, reversible actions.

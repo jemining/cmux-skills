@@ -1,19 +1,5 @@
 # Browser Inspection
 
-## When to use
-
-Read this reference when you need to:
-- inspect a frontend rendered inside the cmux browser
-- verify whether a UI change is visible
-- inspect browser-side errors
-- confirm layout, text, or interaction outcomes
-
-## General rules
-
-- Prefer browser inspection for questions about visual results.
-- Do not claim the UI is correct without checking the browser state.
-- Distinguish browser observations from code assumptions.
-
 ## Browser workflow
 
 Use this when the user says:
@@ -32,7 +18,44 @@ Suggested process:
 ## Example command patterns
 
 ```bash
-cmux browser snapshot -i
+# Open a browser surface
+cmux browser open <url>
+cmux browser open-split <url>          # open in a split pane
+
+# Navigation
+cmux browser <surface> navigate <url>
+cmux browser <surface> reload
+cmux browser <surface> back
+cmux browser <surface> forward
+cmux browser <surface> url            # get current URL
+
+# Snapshot / inspection
+cmux browser snapshot -i              # interactive snapshot
+cmux browser <surface> snapshot --compact
+cmux browser <surface> screenshot --out <path>
+
+# Wait for page state before acting
+cmux browser <surface> wait --load-state complete
+cmux browser <surface> wait --selector <css>
+cmux browser <surface> wait --url-contains <text>
+
+# Interact with elements
+cmux browser <surface> click --selector <css>
+cmux browser <surface> type --selector <css> --text <text>
+cmux browser <surface> fill --selector <css> --text <text>
+cmux browser <surface> scroll --selector <css> --dy <n>
+
+# Read page content
+cmux browser <surface> get url
+cmux browser <surface> get title
+cmux browser <surface> get text --selector <css>
+
+# Console and errors
+cmux browser <surface> console list
+cmux browser <surface> errors list
+
+# Run JavaScript
+cmux browser <surface> eval <js>
 ```
 
 ## What to look for
