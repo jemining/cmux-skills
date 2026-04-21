@@ -14,16 +14,16 @@ Enables AI assistants to interact with the cmux workspace:
 
 ## Installation
 
-Copy this skill into your skills directory:
-
-```bash
-cp -r cmux-skills ~/.claude/skills/cmux-skills
-```
-
-Then reload plugins:
+Add this repository as a marketplace:
 
 ```
-/reload-plugins
+/plugin add-marketplace jemining/cmux-skills
+```
+
+Then install the skill:
+
+```
+/plugin install cmux-skills
 ```
 
 ## Usage
@@ -40,14 +40,16 @@ Once installed, your AI assistant will automatically invoke this skill when you 
 
 ```
 cmux-skills/
-├── SKILL.md                      # Skill entry point
-└── references/
-    ├── overview.md               # Core concepts and safety rules
-    ├── panes.md                  # Reading and writing to panes
-    ├── layout.md                 # Splitting and managing pane layouts
-    ├── browser.md                # Browser surface inspection
-    ├── workflows.md              # Multi-agent workflow patterns
-    └── troubleshooting.md        # Common failures and recovery steps
+└── skills/
+    └── cmux-skills/
+        ├── SKILL.md                  # Skill entry point
+        └── references/
+            ├── overview.md           # Core concepts and safety rules
+            ├── panes.md              # Reading and writing to panes
+            ├── layout.md             # Splitting and managing pane layouts
+            ├── browser.md            # Browser surface inspection
+            ├── workflows.md          # Multi-agent workflow patterns
+            └── troubleshooting.md    # Common failures and recovery steps
 ```
 
 ## Requirements
